@@ -1,5 +1,4 @@
 
-import 'package:get/get.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/api_client.dart';
 import '../../../../core/config/strings/api_endpoint.dart';

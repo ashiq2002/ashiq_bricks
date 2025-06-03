@@ -1,12 +1,11 @@
 import 'package:fpdart/src/either.dart';
-import 'package:get/get.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/connection_checker.dart';
 import '../models/{{feature_name.snakeCase()}}_response.dart';
 import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
 import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
-import '../datasources/login_remote_data_source.dart';
+import '../datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';
 
 class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pascalCase()}}Repository {
   final {{feature_name.pascalCase()}}RemoteDataSource remoteSource;

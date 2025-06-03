@@ -1,0 +1,14 @@
+name: ashiq_feature
+description: Generate clean architecture feature
+vars:
+  feature_name:
+    type: string
+    description: Name of the feature
+  use_getx:
+    type: boolean
+    description: Use GetX for state management?
+    default: true
+  create_tests:
+    type: boolean
+    description: Generate test files?
+    default: false

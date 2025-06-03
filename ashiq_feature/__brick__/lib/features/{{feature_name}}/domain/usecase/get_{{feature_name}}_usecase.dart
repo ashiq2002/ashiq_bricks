@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../repositories/{{feature_name.snakeCase()}}_repository.dart';
+import '../../data/models/{{feature_name.snakeCase()}}_response.dart';
 
 
 class {{feature_name.pascalCase()}}UseCase implements UseCase<{{feature_name.pascalCase()}}Response, Get{{feature_name.pascalCase()}}Params> {

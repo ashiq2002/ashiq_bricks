@@ -1,10 +1,10 @@
 
 import 'package:get/get.dart';
-import '../../../../core/error/server_exception.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/api_client.dart';
-import '../../../../core/strings/api_endpoint.dart';
+import '../../../../core/config/strings/api_endpoint.dart';
 import '../models/{{feature_name.snakeCase()}}_response.dart';
-import '../../domain/usecase/get_{{feature_name.snakeCase()}}_params.dart';
+import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
 
 abstract class {{feature_name.pascalCase()}}RemoteDataSource {
     Future<{{feature_name.pascalCase()}}Response?> login(Get{{feature_name.pascalCase()}}Params params);

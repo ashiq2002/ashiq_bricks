@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
+
 import '../../config/color/app_colors.dart';
-import '../../utils/style.dart';
+import '../../config/theme/style.dart';
 
 
 class EmptyWidget extends StatelessWidget {

@@ -1,11 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:digigo/core/common/widgets/image/skelton_box.dart';
+import 'skelton_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:workmanager/workmanager.dart';
-
-import '../../../constants/constants.dart';
 
 class CacheImage extends StatelessWidget {
   final String? imageUrl;
@@ -38,8 +35,7 @@ class CacheImage extends StatelessWidget {
           height: height,
           width: width,
           fit: fit,
-          imageUrl:
-              imageUrl == Constants.defaultImageUrl ? " " : imageUrl ?? " ",
+          imageUrl: imageUrl ?? " ",
           placeholder: (context, url) =>
               placeHolder ??
               Center(

@@ -21,7 +21,7 @@ class Get{{feature_name.pascalCase()}}Params{
   final Map<String, dynamic>? query;
   final Map<String, dynamic>? body;
 
-  {{feature_name.pascalCase()}}Params({
+  Get{{feature_name.pascalCase()}}Params({
     this.path,
     this.query,
     this.body,

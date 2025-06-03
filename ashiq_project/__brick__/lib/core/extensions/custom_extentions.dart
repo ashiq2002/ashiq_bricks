@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:intl/intl.dart';
 
 import '../config/strings/api_endpoint.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'style.dart';
 
 import '../color/app_colors.dart';
 
@@ -25,7 +26,7 @@ class AppTheme {
         hintStyle: TextStyle(color: AppColors.blackColor)),
     textTheme: TextTheme(
       bodySmall: TextStyle(color: AppColors.primaryColor),
-      bodyMedium: GoogleFonts.inter(color: AppColors.blackColor, fontSize: 18),
+      bodyMedium: TextStyle(color: AppColors.blackColor, fontSize: 18),
       bodyLarge: TextStyle(color: AppColors.kPrimaryColorx),
       labelSmall: TextStyle(color: AppColors.kPrimaryColorx),
       labelMedium: TextStyle(color: AppColors.kPrimaryColorx),

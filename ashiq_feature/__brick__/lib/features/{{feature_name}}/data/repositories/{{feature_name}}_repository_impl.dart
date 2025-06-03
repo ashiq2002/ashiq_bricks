@@ -1,12 +1,12 @@
 import 'package:fpdart/src/either.dart';
 import 'package:get/get.dart';
-import 'package:{{feature_name.snakeCase()}}/core/error/failure.dart';
-import 'package:{{feature_name.snakeCase()}}/core/error/server_exception.dart';
-import 'package:{{feature_name.snakeCase()}}/core/network/connection_checker.dart';
-import 'package:{{feature_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/data/models/{{feature_name.snakeCase()}}_response.dart';
-import 'package:{{feature_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/data/repositories/login_repository.dart';
-import 'package:{{feature_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/domain/usecases/get_login_params.dart';
-import 'package:{{feature_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/data/datasources/login_remote_data_source.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/error/server_exception.dart';
+import '../../../../core/network/connection_checker.dart';
+import '../models/{{feature_name.snakeCase()}}_response.dart';
+import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
+import '../../domain/usecase/get_{{feature_name.snakeCase()}}_params.dart';
+import '../datasources/login_remote_data_source.dart';
 
 class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pascalCase()}}Repository {
   final {{feature_name.pascalCase()}}RemoteSource remoteSource;

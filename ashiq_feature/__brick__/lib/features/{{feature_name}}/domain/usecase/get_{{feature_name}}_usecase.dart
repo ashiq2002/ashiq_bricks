@@ -1,3 +1,9 @@
+import 'package:fpdart/fpdart.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../repositories/{{feature_name.snakeCase()}}_repository.dart';
+
+
 class {{feature_name.pascalCase()}}UseCase implements UseCase<{{feature_name.pascalCase()}}Response, Get{{feature_name.pascalCase()}}Params> {
   final {{feature_name.pascalCase()}}Repository? {{feature_name.snakeCase()}}Repository;
   {{feature_name.pascalCase()}}UseCase({this.{{feature_name.snakeCase()}}Repository});

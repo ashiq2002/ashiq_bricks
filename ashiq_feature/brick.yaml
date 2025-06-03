@@ -1,5 +1,6 @@
 name: ashiq_feature
 description: Generate clean architecture feature
+version: 1.0.0
 vars:
   feature_name:
     type: string

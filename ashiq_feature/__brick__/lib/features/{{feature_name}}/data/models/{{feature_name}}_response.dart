@@ -8,15 +8,15 @@ class {{feature_name.pascalCase()}}Response {
   final String? message;
   @JsonKey(name: 'status_code')
   final int? statusCode;
-  @JsonKey(name: 'error_code')
-  final String? errorCode;
+  @JsonKey(name: 'is_success')
+  final bool? isSuccess;
   @JsonKey(name: 'data')
   final dynamic data;
 
   {{feature_name.pascalCase()}}Response({
     this.message,
     this.statusCode,
-    this.errorCode,
+    this.isSuccess,
     this.data,
   });
 

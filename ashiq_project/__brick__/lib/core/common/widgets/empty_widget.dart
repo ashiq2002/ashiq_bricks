@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 import '../../config/color/app_colors.dart';
@@ -23,7 +24,7 @@ class EmptyWidget extends StatelessWidget {
           Gap(16),
           Text(
             message ?? 'Empty',
-            style: interRegular.copyWith(
+            style: robotoRegular.copyWith(
                 color: AppColors.primarySlate300, fontSize: 16),
           )
         ],

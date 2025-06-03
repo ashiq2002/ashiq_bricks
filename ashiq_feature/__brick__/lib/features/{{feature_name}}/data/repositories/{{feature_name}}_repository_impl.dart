@@ -19,17 +19,19 @@ class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pasc
     // TODO: implement login
     try {
       if (!await (connectionChecker.isConnected)) {
-        return left(Failure("no internet connection!!"));
+        return left(Failure(message: "no internet connection!!"));
       } else {
         final data = await remoteSource.login(params);
-        if (data!.issuccess == false) {
-          return left(Failure(data.message ?? "Failed to login", 0, data.data?.code ?? ""));
+        if (data!.isSuccess == false) {
+          return left(Failure(message: data.message ?? "Failed to login", statusCode: 0, constrain: data.data?.code ?? ""));
         } else {
           return right(data);
         }
       }
     } on ServerException catch (e) {
-      return left(Failure(e.message));
+      return left(Failure(message:e.message));
+    } catch (e) {
+      return left(Failure(message: "Something went wrong"));
     }
   }
   

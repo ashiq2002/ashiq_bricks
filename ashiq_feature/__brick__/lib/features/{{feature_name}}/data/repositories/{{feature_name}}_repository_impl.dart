@@ -1,6 +1,6 @@
 import 'package:fpdart/src/either.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/server_exception.dart';
 import '../../../../core/network/connection_checker.dart';
 import '../models/{{feature_name.snakeCase()}}_response.dart';
 import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';

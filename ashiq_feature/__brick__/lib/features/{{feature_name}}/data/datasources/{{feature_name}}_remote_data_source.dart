@@ -1,5 +1,5 @@
 
-import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/server_exception.dart';
 import '../../../../core/network/api_client.dart';
 import '../../../../core/config/strings/api_endpoint.dart';
 import '../models/{{feature_name.snakeCase()}}_response.dart';

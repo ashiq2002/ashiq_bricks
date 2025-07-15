@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-part '{{feature_name}}_response.g.dart';
+part '{{feature_name.snakeCase()}}_response.g.dart';
 
 
 @JsonSerializable()

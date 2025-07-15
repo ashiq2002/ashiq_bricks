@@ -9,13 +9,10 @@ part of '{{feature_name.snakeCase()}}_response.dart';
 {{feature_name.pascalCase()}}Response _${{feature_name.pascalCase()}}ResponseFromJson(
         Map<String, dynamic> json) =>
     {{feature_name.pascalCase()}}Response(
-      json['issuccess'] as bool?,
-      (json['statusCode'] as num?)?.toInt(),
-      json['message'] as String?,
-      json['data'] == null
-          ? null
-          : {{feature_name.pascalCase()}}Response.fromJson(
-              json['data'] as Map<String, dynamic>),
+      message: json['message'] as String?,
+      statusCode: (json['status_code'] as num?)?.toInt(),
+      isSuccess: json['is_success'] as bool?,
+      data: json['data']
     );
 
 Map<String, dynamic> _${{feature_name.pascalCase()}}ResponseToJson(

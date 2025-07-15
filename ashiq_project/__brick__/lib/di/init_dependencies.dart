@@ -1,0 +1,1 @@
+part 'init_dependencies.main.dart';

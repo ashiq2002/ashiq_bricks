@@ -1,6 +1,8 @@
 import 'package:intl/intl.dart';
+import 'dart:ui';
 
 import '../config/strings/api_endpoint.dart';
+import '../utils/file_type_util.dart';
 
 extension NumberParsing on String {
   int parseInt() {
@@ -178,4 +180,29 @@ extension FormateDate on DateTime? {
     }
   }
 
+}
+
+extension FileTypeColor on FileType {
+  Color get color {
+    switch (this) {
+      case FileType.pdf:
+        return Color(0xFFE53935); // Red
+      case FileType.video:
+        return Color(0xFF8E24AA); // Purple
+      case FileType.image:
+        return Color(0xFF1E88E5); // Blue
+      case FileType.document:
+        return Color(0xFF3949AB); // Indigo
+      case FileType.excel:
+        return Color(0xFF43A047); // Green
+      case FileType.powerpoint:
+        return Color(0xFFFB8C00); // Orange
+      case FileType.text:
+        return Color(0xFF616161); // Gray
+      case FileType.csv:
+        return Color(0xFF00897B); // Teal
+      case FileType.unknown:
+        return Color(0xFFBDBDBD); // Light Gray
+    }
+  }
 }

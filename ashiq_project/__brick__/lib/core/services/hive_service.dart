@@ -43,6 +43,25 @@ class HiveService extends GetxService {
     return null;
   }
 
+    /// Completely remove all boxes from disk and memory (like on logout)
+  Future<void> clearAllData() async {
+    try {
+      // Clear and delete all opened boxes
+      for (final boxName in _boxes.keys) {
+        final box = _boxes[boxName];
+        await box?.clear(); // clear in-memory + on-disk
+        await box?.close(); // close the box
+        await Hive.deleteBoxFromDisk(boxName); // delete from disk
+      }
+
+      _boxes.clear(); // clear internal cache
+      Logger().i("All Hive boxes cleared and deleted.");
+    } catch (e) {
+      Logger().e("Failed to clear all Hive data: $e");
+    }
+  }
+
+
   /// Clear all data from the cache in the specified [boxName].
   Future<void> clearCache(String boxName) async {
     var box = await _ensureBoxIsOpen(boxName);

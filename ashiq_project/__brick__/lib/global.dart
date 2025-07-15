@@ -1,10 +1,35 @@
 import 'dart:io';
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'core/utils/permission_utils.dart';
+import 'di/init_dependencies.dart';
+import 'di/injector.dart';
+import 'core/utils/permission_utils.dart';
 
 class Global {
   static Future<void> init() async {
+    WidgetsFlutterBinding.ensureInitialized();
     // Initialize any global settings or configurations here
+
+    /// Important: init GetIt first, then inject with GetX
+    await initDependencies();
+    await injector();
+
+    ///request permission
+    await requestPermissions();
+
     // For example, setting up HTTP overrides for self-signed certificates
     HttpOverrides.global = MyHttpOverrides();
+
+      FlutterError.onError = (FlutterErrorDetails details) async {
+      if (kDebugMode) {
+        FlutterError.dumpErrorToConsole(details);
+      } else {
+        Zone.current.handleUncaughtError(
+            details.exception, details.stack ?? StackTrace.empty);
+      }
+    };
   }
   static void dispose() {
     // Clean up resources if needed

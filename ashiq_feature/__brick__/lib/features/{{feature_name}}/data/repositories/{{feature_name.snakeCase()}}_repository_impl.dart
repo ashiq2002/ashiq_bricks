@@ -2,10 +2,10 @@ import 'package:fpdart/src/either.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/error/server_exception.dart';
 import '../../../../core/network/connection_checker.dart';
-import '../models/{{feature_name.snakeCase()}}_response.dart';
 import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
 import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
 import '../datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';
+import '../../../../core/common/model/success_response.dart';
 
 class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pascalCase()}}Repository {
   final {{feature_name.pascalCase()}}RemoteDataSource remoteSource;
@@ -15,7 +15,7 @@ class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pasc
       {required this.remoteSource, required this.connectionChecker});
 
   @override
-  Future<Either<Failure, {{feature_name.pascalCase()}}Response>> login(Get{{feature_name.pascalCase()}}Params params) async {
+  Future<Either<Failure, SuccessResponse?>> login(Get{{feature_name.pascalCase()}}Params params) async {
     // TODO: implement login
     try {
       if (!await (connectionChecker.isConnected)) {

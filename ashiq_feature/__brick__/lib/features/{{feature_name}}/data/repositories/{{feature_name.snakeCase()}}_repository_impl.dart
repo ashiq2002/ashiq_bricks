@@ -22,8 +22,14 @@ class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pasc
         return left(Failure(message: "no internet connection!!"));
       } else {
         final data = await remoteSource.login(params);
-        if (data!.isSuccess == false) {
-          return left(Failure(message: data.message ?? "Failed to login", statusCode: 0, constrain: data.data?.code ?? ""));
+        if (data?.success == false) {
+          return left(
+            Failure(
+              message: data?.message ?? "Failed to login",
+              statusCode: 0,
+              constrain: data?.data?.code ?? "",
+            )
+          );
         } else {
           return right(data);
         }

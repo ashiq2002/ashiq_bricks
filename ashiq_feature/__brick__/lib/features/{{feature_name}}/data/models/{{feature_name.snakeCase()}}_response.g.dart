@@ -18,7 +18,7 @@ part of '{{feature_name.snakeCase()}}_response.dart';
 Map<String, dynamic> _${{feature_name.pascalCase()}}ResponseToJson(
         {{feature_name.pascalCase()}}Response instance) =>
     <String, dynamic>{
-      'issuccess': instance.issuccess,
+      'issuccess': instance.isSuccess,
       'statusCode': instance.statusCode,
       'message': instance.message,
       'data': instance.data,

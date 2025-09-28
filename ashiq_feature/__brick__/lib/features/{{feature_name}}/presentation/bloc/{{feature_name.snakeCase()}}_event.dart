@@ -1,7 +1,7 @@
 part of 'user_bloc.dart';
 
 abstract class {{feature_name.pascalCase()}}Event extends Equatable {
-  const {{feature_name.pascalCase()}}Event;
+  const {{feature_name.pascalCase()}}Event();
 }
 
 // class FetchUser extends UserEvent {

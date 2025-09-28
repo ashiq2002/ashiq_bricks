@@ -7,7 +7,7 @@ part '{{feature_name.snakeCase()}}_state.dart';
 
 class {{feature_name.pascalCase()}}Bloc extends Bloc<{{feature_name.pascalCase()}}Event, {{feature_name.pascalCase()}}State> {
   final {{feature_name.pascalCase()}}UseCase {{feature_name.snakeCase()}}UseCase;
-  {{feature_name.pascalCase()}}Bloc({required this.{{feature_name.snakeCase()}}UseCase}) : super({{feature_name.pascalCase()}}InitialState());
+  {{feature_name.pascalCase()}}Bloc({required this.{{feature_name.snakeCase()}}UseCase}) : super({{feature_name.pascalCase()}}Initial());
 
   @override
   Stream<{{feature_name.pascalCase()}}State> mapEventToState({{feature_name.pascalCase()}}Event event) async* {

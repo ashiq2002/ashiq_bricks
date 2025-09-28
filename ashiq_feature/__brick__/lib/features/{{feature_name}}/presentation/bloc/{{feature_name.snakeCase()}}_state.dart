@@ -1,10 +1,10 @@
-part of 'user_bloc.dart';
+part of '{{feature_name.snakeCase()}}_bloc.dart';
 
 abstract class {{feature_name.pascalCase()}}State extends Equatable {
   const {{feature_name.pascalCase()}}State();
 }
 
-class {{feature_name.pascalCase()}}Initial extends UserState {
+class {{feature_name.pascalCase()}}Initial extends {{feature_name.pascalCase()}}State {
   @override
   List<Object> get props => [];
 }

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart'
+import 'package:equatable/equatable.dart';
 import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
 
 part '{{feature_name.snakeCase()}}_event.dart';

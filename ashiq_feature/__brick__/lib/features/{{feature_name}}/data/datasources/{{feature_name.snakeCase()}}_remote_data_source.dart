@@ -3,7 +3,7 @@ import '../../../../core/error/server_exception.dart';
 import '../../../../core/network/api_client.dart';
 import '../../../../core/config/strings/api_endpoint.dart';
 import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
-import '../../../../core/common/model/success_response.dart';
+import '../../../../core/common/models/success_response.dart';
 
 abstract class {{feature_name.pascalCase()}}RemoteDataSource {
     Future<SuccessResponse?> login(Get{{feature_name.pascalCase()}}Params params);

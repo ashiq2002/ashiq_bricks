@@ -5,7 +5,8 @@ import '../../../../core/network/connection_checker.dart';
 import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
 import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
 import '../datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';
-import '../../../../core/common/model/success_response.dart';
+import '../../../../core/common/models/success_response.dart';
+
 
 class {{feature_name.pascalCase()}}RepositoryImpl implements {{feature_name.pascalCase()}}Repository {
   final {{feature_name.pascalCase()}}RemoteDataSource remoteSource;

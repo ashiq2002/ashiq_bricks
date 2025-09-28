@@ -9,6 +9,12 @@ vars:
     type: boolean
     description: Use GetX for state management?
     default: true
+
+  use_bloc:
+    type: boolean
+    description: Use Bloc for state management?
+    default: true
+
   create_tests:
     type: boolean
     description: Generate test files?

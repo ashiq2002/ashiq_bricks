@@ -1,4 +1,4 @@
-import '../../di/injector.dart';
+import '../../core/di/injector.dart';
 import 'data/repositories/{{feature_name.snakeCase()}}_repository_impl.dart';
 import 'domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
 import 'domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';

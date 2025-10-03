@@ -26,7 +26,7 @@ void run(HookContext context) {
   var initContent = initDependencies.readAsStringSync();
 
   // Import
-  final importLine = "import '../features/${featureName}/${featureName}_injector.dart';";
+  final importLine = "import '../../features/${featureName}/${featureName}_injector.dart';";
 
   if (!initContent.contains(importLine)) {
     final regex = RegExp(r'(import .+;\n)+');

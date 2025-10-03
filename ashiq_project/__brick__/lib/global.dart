@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'core/utils/permission_utils.dart';
-import 'di/init_dependencies.dart';
 import 'di/injector.dart';
-import 'core/utils/permission_utils.dart';
 
 class Global {
   static Future<void> init() async {

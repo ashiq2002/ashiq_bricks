@@ -2,8 +2,8 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'core/di/injector.dart';
 import 'core/utils/permission_utils.dart';
-import 'di/injector.dart';
 
 class Global {
   static Future<void> init() async {
@@ -12,7 +12,6 @@ class Global {
 
     /// Important: init GetIt first, then inject with GetX
     await initDependencies();
-    await injector();
 
     ///request permission
     await requestPermissions();

@@ -1,39 +1,43 @@
 import 'dart:io';
+import 'package:mason/mason.dart';
 
 void run(HookContext context) {
   final featureName = context.vars['feature_name'] as String;
-  final pascal = _toPascalCase(featureName);
-  final snake = _toSnakeCase(featureName);
+  final pascalName = featureName
+      .split('_')
+      .map((e) => e[0].toUpperCase() + e.substring(1))
+      .join();
 
   final injectorFile = File('lib/di/injector.dart');
+
   if (!injectorFile.existsSync()) {
-    context.logger.err('injector.dart not found in lib/di/');
+    context.logger.err('❌ injector.dart not found!');
     return;
   }
 
   var content = injectorFile.readAsStringSync();
 
-  // Add import
+  // Import
   final importLine =
-      "import 'package:your_app/features/$snake/${snake}_injector.dart';";
+      "import 'package:your_app/features/${featureName}/${featureName}_injector.dart';";
   if (!content.contains(importLine)) {
-    content = content.replaceFirst('// [FEATURE_IMPORTS]',
-        "$importLine\n// [FEATURE_IMPORTS]");
+    content = content.replaceFirst(
+      RegExp(r'(import .+;\n)+'),
+      (match) => "${match.group(0)}$importLine\n",
+    );
   }
 
-  // Add init call with comment
-  final callLine = "await ${pascal}Injector.init();";
-  if (!content.contains(callLine)) {
-    content = content.replaceFirst('// [FEATURE_INJECTORS]',
-        "  /// Register dependencies for $pascal feature\n  $callLine\n  // [FEATURE_INJECTORS]");
+  // Add init call
+  final registerLine =
+      "  await ${pascalName}Injector.init(injector); // registers $pascalName feature";
+  if (!content.contains(registerLine)) {
+    content = content.replaceFirst(
+      'Future<void> initDependencies() async {',
+      'Future<void> initDependencies() async {\n$registerLine\n',
+    );
   }
 
   injectorFile.writeAsStringSync(content);
-  context.logger.info('✔ Added $pascalInjector to injector.dart');
+
+  context.logger.info('✔ Registered $pascalName in injector.dart');
 }
-
-String _toSnakeCase(String input) =>
-    input.replaceAllMapped(RegExp(r'[A-Z]'), (m) => "_${m[0]!.toLowerCase()}").replaceFirst('_', '');
-
-String _toPascalCase(String input) =>
-    input.split('_').map((w) => w[0].toUpperCase() + w.substring(1)).join();

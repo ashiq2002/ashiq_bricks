@@ -1,16 +1,9 @@
-import 'package:get/get.dart';
-import '../../features/auth/presentation/controllers/auth_controller.dart';
-import '../services/hive_service.dart';
-import 'init_dependencies.dart';
+import 'package:get_it/get_it.dart';
 
-Future<void> injector() async {
+// [FEATURE_IMPORTS]
 
-  ///------------ Services ------------------>>>
-  await Get.putAsync<HiveService>(()=> HiveService().init());
-  await Get.putAsync(() => LocalizationService().init());
+final sl = GetIt.instance;
 
-
-  ///------------ Controller ------------------>>>
-  Get.lazyPut(() => AuthController(authUseCase: serviceLocator()), fenix: true);
-
+Future<void> initDependencies() async {
+  // [FEATURE_INJECTORS]
 }

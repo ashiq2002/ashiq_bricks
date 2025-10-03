@@ -3,7 +3,7 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/error/server_exception.dart';
 import '../../../../core/network/connection_checker.dart';
 import '../../domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
-import '../../domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
+import '../../domain/usecase/{{feature_name.snakeCase()}}_usecase.dart';
 import '../datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';
 import '../../../../core/common/models/success_response.dart';
 

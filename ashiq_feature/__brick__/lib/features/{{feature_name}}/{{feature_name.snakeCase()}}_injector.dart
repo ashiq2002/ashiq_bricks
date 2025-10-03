@@ -1,7 +1,7 @@
-import '../../core/di/injector.dart';
+import '../../core/di/init_dependencies.dart';
 import 'data/repositories/{{feature_name.snakeCase()}}_repository_impl.dart';
 import 'domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
-import 'domain/usecase/get_{{feature_name.snakeCase()}}_usecase.dart';
+import 'domain/usecase/{{feature_name.snakeCase()}}_usecase.dart';
 
 {{#use_bloc}}
 import 'presentation/bloc/{{feature_name.snakeCase()}}_bloc.dart';
@@ -24,7 +24,7 @@ class {{feature_name.pascalCase()}}Injector {
     {{#use_bloc}}
     // Bloc
     sl.registerFactory(() => {{feature_name.pascalCase()}}Bloc(
-      {{feature_name.pascalCase()}}Usecase: sl(),
+      {{feature_name.snakeCase()}}UseCase: sl(),
     ));
     {{/use_bloc}}
   }

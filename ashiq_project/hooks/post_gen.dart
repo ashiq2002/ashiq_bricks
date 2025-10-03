@@ -3,8 +3,7 @@ import 'package:mason/mason.dart';
 import 'package:yaml/yaml.dart';
 
 void run(HookContext context) {
-  
-  final file = File('${context.vars['__brick_root__']}/hooks/required_dependencies.yml');
+  final file = File('required_dependencies.yml');
   if (!file.existsSync()) {
     context.logger.err('required_dependencies.yml not found!');
     return;
@@ -13,18 +12,21 @@ void run(HookContext context) {
   final yamlContent = file.readAsStringSync();
   final doc = loadYaml(yamlContent);
 
-  // Install normal dependencies
-  final deps = doc['dep'] as YamlList? ?? [];
-  for (var dep in deps) {
-    context.logger.info('Adding dependency: $dep');
-    Process.runSync('flutter', ['pub', 'add', dep], runInShell: true);
+
+  // Normal dependencies
+  final deps = (doc['dep'] as YamlList?)?.map((e) => e.toString()).toList() ?? [];
+  if (deps.isNotEmpty) {
+    final depsStr = deps.join(' '); // join by space
+    context.logger.info('Adding dependencies: $depsStr');
+    Process.runSync('flutter', ['pub', 'add', ...deps], runInShell: true);
   }
 
-  // Install dev dependencies
-  final devDeps = doc['dev'] as YamlList? ?? [];
-  for (var dep in devDeps) {
-    context.logger.info('Adding dev dependency: $dep');
-    Process.runSync('flutter', ['pub', 'add', '--dev', dep], runInShell: true);
+  // Dev dependencies
+  final devDeps = (doc['dev'] as YamlList?)?.map((e) => e.toString()).toList() ?? [];
+  if (devDeps.isNotEmpty) {
+    final devDepsStr = devDeps.join(' ');
+    context.logger.info('Adding dev dependencies: $devDepsStr');
+    Process.runSync('flutter', ['pub', 'add', '--dev', ...devDeps], runInShell: true);
   }
 
   context.logger.success('Dependencies installation completed!');

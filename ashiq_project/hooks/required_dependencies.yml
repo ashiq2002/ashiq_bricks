@@ -1,9 +1,0 @@
-dep:
-  - get_it
-  - bloc
-  - fpdart
-  - gap
-
-dev:
-  - build_runner
-  - json_serializable

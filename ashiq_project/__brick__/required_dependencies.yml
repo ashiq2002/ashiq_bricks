@@ -1,0 +1,27 @@
+dep:
+  - get_it
+  - bloc
+  - equatable
+  - intl
+  - fpdart
+  - gap
+  - dio
+  - flutter_screenutil
+  - hive
+  - logger
+  - path_provider
+  - image_picker
+  - file_picker
+  - flutter_svg
+  - cached_network_image
+  - internet_connection_checker_plus
+  - json_annotation
+  - go_router
+  - connectivity_plus
+  - permission_handler
+  - fluttertoast
+  - photo_view
+
+dev:
+  - build_runner
+  - json_serializable

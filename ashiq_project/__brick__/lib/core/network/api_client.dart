@@ -104,14 +104,7 @@ class ApiClient {
 
       debugPrint("❗️Server responded with $statusCode: ${data.toString()}");
 
-      if (!isToast.value) {
-        showSnackBar(
-            message: extractedMessage ?? "Bad request",
-            backgroundColor: Colors.red,
-            duration: const Duration(seconds: 5));
-      } else {
-        showToast(message: extractedMessage ?? "Bad request");
-      }
+      showToast(message: extractedMessage ?? "Bad request");
 
       if (statusCode == 401 && onLogout != null) {
         debugPrint("🚪 Unauthorized! Triggering logout...");

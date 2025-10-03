@@ -48,7 +48,7 @@ class AppTheme {
       backgroundColor: AppColors.whiteColor,
       scrolledUnderElevation: 0,
       titleTextStyle: robotoSemiBold.copyWith(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: AppColors.primarySlate800
 
       ),

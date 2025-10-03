@@ -2,13 +2,18 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'core/di/injector.dart';
+import 'core/di/init_dependencies.dart';
 import 'core/utils/permission_utils.dart';
+import 'package:easy_localization/easy_localization.dart';
 
+
+// Initialize any global settings or configurations here
 class Global {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
-    // Initialize any global settings or configurations here
+
+    ///initialize easy localization
+    await EasyLocalization.ensureInitialized();
 
     /// Important: init GetIt first, then inject with GetX
     await initDependencies();
@@ -16,10 +21,11 @@ class Global {
     ///request permission
     await requestPermissions();
 
-    // For example, setting up HTTP overrides for self-signed certificates
+    /// For example, setting up HTTP overrides for self-signed certificates
     HttpOverrides.global = MyHttpOverrides();
-
-      FlutterError.onError = (FlutterErrorDetails details) async {
+    
+    ///flutter error handling 
+    FlutterError.onError = (FlutterErrorDetails details) async {
       if (kDebugMode) {
         FlutterError.dumpErrorToConsole(details);
       } else {
@@ -29,7 +35,7 @@ class Global {
     };
   }
   static void dispose() {
-    // Clean up resources if needed
+    /// Clean up resources if needed
     HttpOverrides.global = null; // Reset to default overrides
   }
 }

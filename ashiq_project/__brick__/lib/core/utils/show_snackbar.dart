@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rawa_shipping_mobile_app/core/config/theme/style.dart';
-
+import '../config/theme/style.dart';
 import '../config/routes/app_route.dart';
 
 void showSnackBar({

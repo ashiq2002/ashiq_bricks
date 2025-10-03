@@ -1,4 +1,4 @@
-import 'package:get_it/get_it.dart';
+part of 'init_dependencies.dart';
 
 // [FEATURE_IMPORTS]
 

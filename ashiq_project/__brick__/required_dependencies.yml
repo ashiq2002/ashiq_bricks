@@ -21,6 +21,8 @@ dep:
   - permission_handler
   - fluttertoast
   - photo_view
+  - easy_localization
+  - shimmer
 
 dev:
   - build_runner

@@ -3,10 +3,7 @@ import 'package:mason/mason.dart';
 import 'package:yaml/yaml.dart';
 
 void run(HookContext context) {
-
-  // required_dependencies.yml is in the brick root, so go one level up from hooks
-  final file = File('${Directory.current.path}/required_dependencies.yml');
-
+  final file = File('required_dependencies.yml');
   if (!file.existsSync()) {
     context.logger.err('required_dependencies.yml not found!');
     return;

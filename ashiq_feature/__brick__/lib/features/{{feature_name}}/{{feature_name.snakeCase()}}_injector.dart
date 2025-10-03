@@ -19,7 +19,7 @@ class {{feature_name.pascalCase()}}Injector {
     );
 
     // Usecases
-    sl.registerLazySingleton(() => {{feature_name.pascalCase()}}Usecase({{feature_name.snakeCase()}}Repository: sl()));
+    sl.registerLazySingleton(() => {{feature_name.pascalCase()}}UseCase({{feature_name.snakeCase()}}Repository: sl()));
 
     {{#use_bloc}}
     // Bloc

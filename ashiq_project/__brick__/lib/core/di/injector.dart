@@ -1,7 +1,5 @@
 part of 'init_dependencies.dart';
 
-// [FEATURE_IMPORTS]
-
 final sl = GetIt.instance;
 
 Future<void> initDependencies() async {
@@ -24,6 +22,7 @@ Future<void> initDependencies() async {
       },
     ),
   );
-
-  // [FEATURE_INJECTORS]
+ 
+   ///don't remove this comment 
+  //[FEATURE_INJECTORS]
 }

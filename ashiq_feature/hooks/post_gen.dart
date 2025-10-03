@@ -10,22 +10,29 @@ void run(HookContext context) {
 
   final injectorFile = File('lib/core/di/injector.dart');
 
+  final initDependencies = File('lib/core/di/init_dependencies.dart');
+
   if (!injectorFile.existsSync()) {
     context.logger.err('❌ injector.dart not found!');
     return;
   }
 
+  if (!initDependencies.existsSync()) {
+    context.logger.err('❌ init_dependencies.dart not found!');
+    return;
+  }
+
   var content = injectorFile.readAsStringSync();
+  var initContent = initDependencies.readAsStringSync();
 
   // Import
-  final importLine =
-      "import '../features/${featureName}/${featureName}_injector.dart';";
+  final importLine = "import '../features/${featureName}/${featureName}_injector.dart';";
 
-  if (!content.contains(importLine)) {
+  if (!initContent.contains(importLine)) {
     final regex = RegExp(r'(import .+;\n)+');
-    final match = regex.firstMatch(content);
+    final match = regex.firstMatch(initContent);
     if (match != null) {
-      content = content.replaceRange(
+      initContent = initContent.replaceRange(
         match.end,
         match.end,
         "$importLine\n",
@@ -39,12 +46,13 @@ void run(HookContext context) {
 
   if (!content.contains(registerLine)) {
     content = content.replaceFirst(
-      'Future<void> initDependencies() async {',
-      'Future<void> initDependencies() async {\n$registerLine\n',
+      '//[FEATURE_INJECTORS]',
+      '//[FEATURE_INJECTORS]\n$registerLine\n',
     );
   }
 
   injectorFile.writeAsStringSync(content);
+  initDependencies.writeAsStringSync(initContent);
 
   context.logger.info('✔ Registered $pascalName in injector.dart');
 }

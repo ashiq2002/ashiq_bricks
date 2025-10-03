@@ -2,20 +2,7 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 import 'package:yaml/yaml.dart';
 
-void run(HookContext context) async {
-  // Prompt user using context.logger.prompt
-  final input = context.logger.prompt(
-    'Do you want to include dependencies from required_dependencies.yml? (y/N)',
-  );
-
-  final includeDependencies = input.trim().toLowerCase() == 'y';
-
-  if (!includeDependencies) {
-    context.logger.info('Skipping dependencies installation.');
-    return;
-  }
-
-  // Read required_dependencies.yml
+void run(HookContext context) {
   final file = File('required_dependencies.yml');
   if (!file.existsSync()) {
     context.logger.err('required_dependencies.yml not found!');

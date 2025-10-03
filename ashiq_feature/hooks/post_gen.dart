@@ -20,16 +20,23 @@ void run(HookContext context) {
   // Import
   final importLine =
       "import 'package:your_app/features/${featureName}/${featureName}_injector.dart';";
+
   if (!content.contains(importLine)) {
-    content = content.replaceFirst(
-      RegExp(r'(import .+;\n)+'),
-      (match) => "${match.group(0)}$importLine\n",
-    );
+    final regex = RegExp(r'(import .+;\n)+');
+    final match = regex.firstMatch(content);
+    if (match != null) {
+      content = content.replaceRange(
+        match.end,
+        match.end,
+        "$importLine\n",
+      );
+    }
   }
 
   // Add init call
   final registerLine =
       "  await ${pascalName}Injector.init(injector); // registers $pascalName feature";
+
   if (!content.contains(registerLine)) {
     content = content.replaceFirst(
       'Future<void> initDependencies() async {',

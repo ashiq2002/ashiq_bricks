@@ -1,4 +1,5 @@
 name: ashiq_project
 description: Flutter clean arch starter
+repository: https://github.com/ashiq2002/ashiq_bricks.git
 version: 1.0.0
 vars: {}

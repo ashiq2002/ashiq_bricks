@@ -19,8 +19,8 @@ class {{feature_name.pascalCase()}}RemoteSourceImpl implements {{feature_name.pa
     try {
       final result = await apiClient.post(
           api: ApiEndpoint.login,
-          body: params.body
-          );
+          body: params.body ?? {}
+      );
       return SuccessResponse.fromJson(result.data);
     } catch (e) {
       throw ServerException(e.toString());

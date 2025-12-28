@@ -1,4 +1,6 @@
 import '../../core/di/init_dependencies.dart';
+import '../../core/network/connection_checker.dart';
+import 'data/datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';
 import 'data/repositories/{{feature_name.snakeCase()}}_repository_impl.dart';
 import 'domain/repositories/{{feature_name.snakeCase()}}_repository.dart';
 import 'domain/usecase/{{feature_name.snakeCase()}}_usecase.dart';
@@ -13,7 +15,7 @@ class {{feature_name.pascalCase()}}Injector {
 
     // Remote Data Source
     sl.registerLazySingleton<{{feature_name.pascalCase()}}RemoteDataSource>(
-      () => {{feature_name.pascalCase()}}RemoteDataSourceImpl(
+      () => {{feature_name.pascalCase()}}RemoteSourceImpl(
         apiClient: sl(), // Make sure ApiClient is already registered
       ),
     );
@@ -29,7 +31,7 @@ class {{feature_name.pascalCase()}}Injector {
     // UseCase
     sl.registerLazySingleton(
       () => {{feature_name.pascalCase()}}UseCase(
-        repository: sl<{{feature_name.pascalCase()}}Repository>(),
+        {{feature_name.snakeCase()}}Repository: sl<{{feature_name.pascalCase()}}Repository>(),
       ),
     );
 
@@ -37,7 +39,7 @@ class {{feature_name.pascalCase()}}Injector {
     // Bloc
     sl.registerFactory(
       () => {{feature_name.pascalCase()}}Bloc(
-        useCase: sl<{{feature_name.pascalCase()}}UseCase>(),
+        {{feature_name.snakeCase()}}UseCase: sl<{{feature_name.pascalCase()}}UseCase>(),
       ),
     );
     {{/use_bloc}}

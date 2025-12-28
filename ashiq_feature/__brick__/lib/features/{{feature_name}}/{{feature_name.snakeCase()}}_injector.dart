@@ -10,22 +10,36 @@ import 'presentation/bloc/{{feature_name.snakeCase()}}_bloc.dart';
 class {{feature_name.pascalCase()}}Injector {
   /// Initialize {{feature_name.pascalCase()}} feature dependencies
   static Future<void> init() async {
-    // Repository
-    sl.registerLazySingleton<{{feature_name.pascalCase()}}Repository>(
-      () => {{feature_name.pascalCase()}}RepositoryImpl(
-        remoteSource: sl(),
-        connectionChecker: sl()
+
+    // Remote Data Source
+    sl.registerLazySingleton<{{feature_name.pascalCase()}}RemoteDataSource>(
+      () => {{feature_name.pascalCase()}}RemoteDataSourceImpl(
+        apiClient: sl(), // Make sure ApiClient is already registered
       ),
     );
 
-    // Usecases
-    sl.registerLazySingleton(() => {{feature_name.pascalCase()}}UseCase({{feature_name.snakeCase()}}Repository: sl()));
+    // Repository
+    sl.registerLazySingleton<{{feature_name.pascalCase()}}Repository>(
+      () => {{feature_name.pascalCase()}}RepositoryImpl(
+        remoteSource: sl<{{feature_name.pascalCase()}}RemoteDataSource>(),
+        connectionChecker: sl<ConnectionChecker>(),
+      ),
+    );
+
+    // UseCase
+    sl.registerLazySingleton(
+      () => {{feature_name.pascalCase()}}UseCase(
+        repository: sl<{{feature_name.pascalCase()}}Repository>(),
+      ),
+    );
 
     {{#use_bloc}}
     // Bloc
-    sl.registerFactory(() => {{feature_name.pascalCase()}}Bloc(
-      {{feature_name.snakeCase()}}UseCase: sl(),
-    ));
+    sl.registerFactory(
+      () => {{feature_name.pascalCase()}}Bloc(
+        useCase: sl<{{feature_name.pascalCase()}}UseCase>(),
+      ),
+    );
     {{/use_bloc}}
   }
 }

@@ -47,8 +47,8 @@ class CustomCheckbox extends StatelessWidget {
             title,
             style:
                 titleStyle ??
-                interRegular.copyWith(
-                  color: AppColors.grey800,
+                robotoRegular.copyWith(
+                  color: AppColors.primarySlate800,
                   fontSize: 12,
                   letterSpacing: -0.3,
                 ),

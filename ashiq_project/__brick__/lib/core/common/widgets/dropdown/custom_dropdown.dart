@@ -74,9 +74,9 @@ class CustomDropdown<T> extends StatelessWidget {
         if (label != null)
           Text(
             label!,
-            style: interMedium.copyWith(
+            style: robotoMedium.copyWith(
               fontSize: 13,
-              color: readOnly ? AppColors.grey400 : AppColors.grey700,
+              color: readOnly ? AppColors.primarySlate400 : AppColors.primarySlate700,
               letterSpacing: -0.2,
             ),
           ),
@@ -111,7 +111,7 @@ class CustomDropdown<T> extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis, // 👈 works now
                   style: interRegular.copyWith(
-                    color: AppColors.grey700,
+                    color: AppColors.primarySlate700,
                     fontSize: 13,
                     letterSpacing: -0.3,
                   ),
@@ -147,7 +147,7 @@ class CustomDropdown<T> extends StatelessWidget {
               label: labelText != null
                   ? Text(
                 labelText!,
-                style: interMedium.copyWith(
+                style: robotoMedium.copyWith(
                   color: readOnly
                       ? AppColors.primarySlate400
                       : const Color(0xff333333),

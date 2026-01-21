@@ -7,6 +7,8 @@ class CustomTextField extends StatefulWidget {
   final InputBorder? border;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
+  final double? prefixIconSize;
+  final double? suffixIconSize;
   final bool borderEnable;
   final String? hintText;
   final bool obscure;
@@ -39,6 +41,8 @@ class CustomTextField extends StatefulWidget {
     this.border,
     this.enabledBorder,
     this.focusedBorder,
+    this.prefixIconSize,
+    this.suffixIconSize,
     this.borderEnable = false,
     this.isPassword = false,
     this.hintText,
@@ -105,12 +109,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
               widget.label!,
               style:
                   widget.labelStyle ??
-                  interMedium.copyWith(
+                  robotoMedium.copyWith(
                     color:
                         widget.labelColor ??
                         (widget.enabled == false
-                            ? AppColors.grey400
-                            : AppColors.grey700),
+                            ? AppColors.primarySlate400
+                            : AppColors.primarySlate700),
                     fontSize: 13,
                   ),
             ),
@@ -131,10 +135,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
           maxLines: widget.maxLines,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
-            fillColor:
-                widget.filledColor ??
-                AppColors.whiteColor.withValues(alpha: 0.2),
-            filled: true,
+            prefixIconConstraints: BoxConstraints(
+              minWidth: widget.prefixIconSize ?? 40,
+              minHeight: widget.prefixIconSize ?? 40,
+            ),
+            suffixIconConstraints: BoxConstraints(
+              minWidth: widget.suffixIconSize ?? 40,
+              minHeight: widget.suffixIconSize ?? 40,
+            ),
+            fillColor: widget.filledColor,
+            filled: widget.filledColor != null,
             contentPadding:
                 widget.contentPadding ??
                 const EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -144,8 +154,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       child: Icon(
-                        color: AppColors.grey200,
-                        obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: AppColors.primarySlate200,
+                        !obscureText ? Icons.visibility : Icons.visibility_off,
                         size: 24,
                       ),
                     ),
@@ -153,7 +163,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 : widget.suffixIcon,
             hintText: widget.hintText,
             hintStyle: interRegular.copyWith(
-              color: widget.hintColor ?? AppColors.grey400,
+              color: widget.hintColor ?? AppColors.primarySlate400,
               fontSize: 12,
               letterSpacing: 0,
             ),
@@ -188,7 +198,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ),
           style:
               widget.style ??
-              interRegular.copyWith(fontSize: 15, color: Colors.black),
+              robotoRegular.copyWith(fontSize: 15, color: Colors.black),
           cursorColor: AppColors.primaryColor,
           cursorWidth: 1,
         ),

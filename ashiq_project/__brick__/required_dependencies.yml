@@ -8,7 +8,6 @@ dep:
   - dio
   - flutter_screenutil
   - hive
-  - logger
   - path_provider
   - image_picker
   - file_picker

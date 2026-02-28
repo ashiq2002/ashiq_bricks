@@ -1,4 +1,6 @@
+{{#use_getx}}
 import 'package:get/get.dart';
+{{/use_getx}}
 import '../../core/di/init_dependencies.dart';
 import '../../core/network/connection_checker.dart';
 import 'data/datasources/{{feature_name.snakeCase()}}_remote_data_source.dart';

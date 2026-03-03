@@ -6,3 +6,4 @@ environment:
 
 dependencies:
   mason: any
+  yaml: any
